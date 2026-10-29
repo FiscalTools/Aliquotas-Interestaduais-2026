@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#10243a">
+<title>Matriz de Alíquotas Interestaduais de ICMS — 2026</title>
+<style>
+:root{
+  --navy:#10243a;--navy-2:#183852;--cyan:#08a8df;--teal:#dff6fb;
+  --ink:#1c2d3d;--muted:#607184;--line:#dce5ec;--paper:#f4f7fa;
+  --white:#fff;--green:#16836b;--amber:#fff4d8;--amber-ink:#805a00;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+.hero{background:linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;padding:42px 22px 36px;border-bottom:5px solid var(--cyan)}
+.wrap{max-width:1500px;margin:0 auto}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:.76rem;font-weight:800;color:#80e1ff}
+h1{font-size:clamp(1.8rem,4vw,3rem);line-height:1.12;margin:10px 0 12px;letter-spacing:-.035em}
+.hero p{max-width:850px;color:#d9e8f2;margin:0;font-size:1.04rem}
+main{max-width:1500px;margin:0 auto;padding:24px 22px 48px}
+.notice{display:flex;gap:14px;align-items:flex-start;background:var(--amber);border:1px solid #f0d58c;border-radius:14px;padding:16px 18px;margin-bottom:22px;color:#4f3d13}
+.notice strong{display:block;color:var(--amber-ink);margin-bottom:3px}
+.notice .symbol{font-size:1.35rem;line-height:1.4}
+.intro{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:0 0 24px}
+.info{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:17px 18px;box-shadow:0 4px 15px #10243a08}
+.info h2{font-size:.96rem;margin:0 0 6px;color:var(--navy)}
+.info p{margin:0;color:var(--muted);font-size:.91rem}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 28px #10243a0a}
+.panel-head{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:19px 20px;border-bottom:1px solid var(--line)}
+.panel-head h2{margin:0;color:var(--navy);font-size:1.2rem}
+.panel-head p{margin:3px 0 0;color:var(--muted);font-size:.88rem}
+.controls{display:flex;gap:10px;flex-wrap:wrap}
+input,select,button{font:inherit;border:1px solid #cbd7e1;border-radius:9px;padding:10px 12px;background:#fff;color:var(--ink)}
+input{min-width:220px}
+button{cursor:pointer;font-weight:700}
+button:hover{border-color:var(--cyan);background:#f0fbff}
+.legend{display:flex;gap:10px 18px;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.key{display:inline-flex;align-items:center;gap:7px}
+.swatch{width:12px;height:12px;border-radius:3px;display:inline-block;border:1px solid #cbd7e1}
+.swatch.diag{background:#e8f0f7;border-color:#8ca3b8}
+.swatch.r4{background:#dff6fb;border-color:#55bdd8}
+.swatch.r7{background:#e7f5e9;border-color:#88c89b}
+.swatch.r12{background:#fff;border-color:#cbd7e1}
+.table-wrap{overflow:auto;max-height:72vh}
+table{border-collapse:separate;border-spacing:0;min-width:1050px;width:100%;font-size:.79rem;font-variant-numeric:tabular-nums}
+caption{text-align:left;padding:12px 18px;color:var(--muted);font-size:.83rem}
+th,td{padding:8px 9px;text-align:center;white-space:nowrap;border-right:1px solid #e4ebf0;border-bottom:1px solid #e4ebf0}
+thead th{position:sticky;top:0;z-index:3;background:var(--navy);color:#fff;font-weight:800}
+thead th:first-child{left:0;z-index:5}
+tbody th{position:sticky;left:0;z-index:2;text-align:left;background:#edf3f7;color:var(--navy);font-weight:800}
+td{background:#fff}
+td.rate-4{background:#dff6fb;color:#075b73;font-weight:800}
+td.rate-7{background:#e7f5e9;color:#21653c;font-weight:700}
+td.rate-12{background:#fff;color:#33495b}
+td.diagonal{background:#e8f0f7;color:#10243a;font-weight:900;box-shadow:inset 0 0 0 2px #91a9bd}
+td:hover{outline:2px solid var(--cyan);outline-offset:-2px}
+td.selected,th.selected{background:#bceeff!important;color:#07394a!important;box-shadow:inset 0 0 0 2px var(--cyan)}
+tfoot td{padding:14px 18px;text-align:left;background:#f7fafc;color:var(--muted);white-space:normal}
+.after{margin-top:24px;display:grid;grid-template-columns:1.15fr 1fr;gap:18px}
+.after section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px}
+.after h2{font-size:1.08rem;color:var(--navy);margin:0 0 8px}
+.after p,.after li{color:var(--muted);font-size:.93rem}
+.after p{margin:0 0 9px}
+.after ul{padding-left:20px;margin:8px 0 0}
+.footer{margin-top:22px;color:var(--muted);font-size:.82rem;text-align:center}
+.pill{display:inline-block;padding:3px 8px;border-radius:999px;background:#e9f6fc;color:#07617b;font-size:.76rem;font-weight:800}
+@media(max-width:850px){.intro{grid-template-columns:1fr}.after{grid-template-columns:1fr}.hero{padding:30px 18px}main{padding:18px 12px 32px}.panel-head{align-items:flex-start}.controls{width:100%}input{min-width:0;flex:1;width:100%}}
+@media print{body{background:#fff}.hero{background:#fff;color:#10243a;padding:20px;border-bottom:2px solid #10243a}.hero p{color:#33495b}main{padding:12px}.notice{break-inside:avoid}.table-wrap{max-height:none;overflow:visible}thead th,tbody th{position:static}.panel{box-shadow:none}.controls,button{display:none}.after{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Referência de consulta • Exercício 2026</div>
+    <h1>Matriz de alíquotas de ICMS<br>entre estados</h1>
+    <p>Consulte a alíquota de referência para operações interestaduais conforme a UF de origem e a UF de destino. Use esta matriz como apoio inicial à análise fiscal — não como substituta da validação tributária da operação.</p>
+  </div>
+</header>
+<main>
+  <div class="notice" role="note">
+    <div class="symbol" aria-hidden="true">⚠️</div>
+    <div><strong>Atenção: valide com a contabilidade antes de parametrizar ou orientar o cliente.</strong>
+      As alíquotas efetivas e o tratamento fiscal podem depender da natureza da operação, produto, NCM, origem da mercadoria, benefícios fiscais, regime tributário e regras vigentes. Confirme o enquadramento aplicável com a contabilidade responsável e consulte a legislação oficial atualizada.
+    </div>
+  </div>
+
+  <div class="intro">
+    <article class="info"><h2>Como consultar</h2><p>Localize a UF na linha <b>Origem</b> e cruze com a UF na coluna <b>Destino</b>. O valor na interseção representa a alíquota indicada pela matriz.</p></article>
+    <article class="info"><h2>Operações interestaduais</h2><p>As alíquotas de referência mais comuns são 7% ou 12%, conforme a combinação de origem e destino prevista nas regras aplicáveis.</p></article>
+    <article class="info"><h2>Mercadoria importada</h2><p>A alíquota de 4% pode se aplicar a determinadas operações interestaduais com bens e mercadorias importados, observadas as condições e exceções legais.</p></article>
+  </div>
+
+  <section class="panel" aria-labelledby="matrix-title">
+    <div class="panel-head">
+      <div><h2 id="matrix-title">Tabela de consulta</h2><p>Selecione uma UF de origem e/ou destino para destacar o cruzamento.</p></div>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Filtrar UF (ex.: SC, SP, BA)" aria-label="Filtrar por UF">
+        <select id="origin" aria-label="Selecionar UF de origem"><option value="">Todas as origens</option></select>
+        <select id="destination" aria-label="Selecionar UF de destino"><option value="">Todos os destinos</option></select>
+        <button id="clear" type="button">Limpar filtros</button>
+      </div>
+    </div>
+    <div class="legend" aria-label="Legenda">
+      <span class="key"><i class="swatch diag"></i>Alíquota interna indicada na diagonal</span>
+      <span class="key"><i class="swatch r4"></i>4% — regra para importados, quando aplicável</span>
+      <span class="key"><i class="swatch r7"></i>7% — determinadas combinações interestaduais</span>
+      <span class="key"><i class="swatch r12"></i>12% — demais combinações indicadas</span>
+    </div>
+    <div class="table-wrap">
+      <table id="matrix">
+        <caption>Valores em percentual (%). A linha “IM” representa a hipótese de origem de mercadoria importada prevista na matriz de referência.</caption>
+        <thead><tr id="head-row"><th scope="col">ORIGEM ↓ / DESTINO →</th></tr></thead>
+        <tbody id="body-rows"></tbody>
+        <tfoot><tr><td colspan="29">A diagonal contém alíquotas internas estaduais transcritas da matriz de referência fornecida. Confirme se continuam vigentes para a operação e data analisadas.</td></tr></tfoot>
+      </table>
+    </div>
+  </section>
+
+  <div class="after">
+    <section>
+      <h2>Antes de utilizar a informação</h2>
+      <p>Esta página foi organizada para facilitar a consulta rápida entre analistas. A alíquota destacada não determina, isoladamente, todo o cálculo do ICMS nem substitui a análise do documento fiscal.</p>
+      <ul>
+        <li>Confirme a UF de origem e a UF de destino efetivas da operação.</li>
+        <li>Verifique a natureza da operação, o produto/NCM, a origem da mercadoria e eventuais exceções.</li>
+        <li>Considere o regime tributário, benefícios fiscais, diferimento, redução de base de cálculo, ICMS-ST, DIFAL e FCP, quando pertinentes.</li>
+        <li>Para dúvidas ou divergências, solicite validação à contabilidade do cliente e consulte a legislação aplicável.</li>
+      </ul>
+    </section>
+    <section>
+      <h2>Importante para o atendimento</h2>
+      <p>Use a matriz como ponto de partida para a investigação. Antes de orientar parametrizações no sistema ou confirmar um tratamento tributário, registre o cenário e valide a regra com a contabilidade responsável.</p>
+      <p><b>Referências legais para conferência:</b> Resolução do Senado Federal nº 22/1989 (alíquotas interestaduais) e Resolução do Senado Federal nº 13/2012 (operações interestaduais com bens e mercadorias importados), além da legislação estadual e normas específicas vigentes.</p>
+      <p><span class="pill">Boa prática</span> Registre a data da consulta e a confirmação recebida da contabilidade no chamado ou na análise fiscal.</p>
+    </section>
+  </div>
+  <div class="footer">Material interno de apoio • Revisar periodicamente • A validação da regra aplicável é responsabilidade da análise fiscal com suporte da contabilidade.</div>
+</main>
+<script>
+const states = [
+  ["AC",19],["AL",19],["AM",20],["AP",18],["BA",20.5],["CE",20],["DF",20],["ES",17],
+  ["GO",19],["MA",22],["MT",17],["MS",17],["MG",18],["PA",19],["PB",20],["PR",19.5],
+  ["PE",20.5],["PI",22.5],["RN",18],["RS",17],["RJ",20],["RO",19.5],["RR",20],["SC",17],
+  ["SP",18],["SE",19],["TO",20],["IM",4]
+];
+const north = new Set(["AC","AP","AM","PA","RO","RR","TO"]);
+const northeast = new Set(["AL","BA","CE","MA","PB","PE","PI","RN","SE"]);
+const midwest = new Set(["DF","GO","MT","MS"]);
+const southeast = new Set(["ES","MG","RJ","SP"]);
+const south = new Set(["PR","RS","SC"]);
+const allRegions = [north,northeast,midwest];
+function interstateRate(origin,dest){
+  if(origin==="IM") return 4;
+  if(origin===dest) return states.find(s=>s[0]===origin)[1];
+  // 7% quando a origem está no Sul/Sudeste (exceto ES) e o destino está no N/NE/CO ou ES.
+  const originSouthEast = (south.has(origin) || (southeast.has(origin) && origin!=="ES"));
+  const destinationGroup = north.has(dest)||northeast.has(dest)||midwest.has(dest)||dest==="ES";
+  return originSouthEast && destinationGroup ? 7 : 12;
+}
+const head=document.getElementById("head-row");
+const body=document.getElementById("body-rows");
+const originSelect=document.getElementById("origin");
+const destinationSelect=document.getElementById("destination");
+const search=document.getElementById("search");
+for(const [uf] of states){
+  const th=document.createElement("th"); th.scope="col"; th.textContent=uf; th.dataset.uf=uf; head.appendChild(th);
+  for(const select of [originSelect,destinationSelect]){
+    const option=document.createElement("option"); option.value=uf; option.textContent=uf; select.appendChild(option);
+  }
+}
+for(const [origin] of states){
+  const tr=document.createElement("tr"); tr.dataset.origin=origin;
+  const th=document.createElement("th"); th.scope="row"; th.textContent=origin; th.dataset.uf=origin; tr.appendChild(th);
+  for(const [dest] of states){
+    const td=document.createElement("td"); const rate=interstateRate(origin,dest);
+    td.textContent=String(rate).replace(".",",")+"%"; td.dataset.origin=origin; td.dataset.destination=dest;
+    td.className=origin===dest ? "diagonal" : `rate-${rate}`;
+    td.title=`Origem: ${origin} • Destino: ${dest} • Alíquota indicada: ${String(rate).replace(".",",")}%`;
+    tr.appendChild(td);
+  }
+  body.appendChild(tr);
+}
+function applyFilters(){
+  const q=search.value.trim().toUpperCase();
+  const o=originSelect.value,d=destinationSelect.value;
+  for(const row of body.rows){
+    const origin=row.dataset.origin;
+    const showRow=(!o||origin===o)&&(!q||origin.includes(q)||states.some(s=>s[0]===q&&origin===q));
+    row.hidden=!showRow;
+    for(const cell of row.cells){
+      if(cell.tagName==="TD"){
+        const dest=cell.dataset.destination;
+        cell.hidden=!!d&&dest!==d;
+        cell.classList.toggle("selected",(!o||origin===o)&&(!d||dest===d)&&!!(o||d));
+      }
+    }
+  }
+  for(const th of head.querySelectorAll("th[data-uf]")){
+    th.classList.toggle("selected",!!d&&th.dataset.uf===d);
+    th.hidden=!!d&&th.dataset.uf!==d;
+  }
+}
+search.addEventListener("input",applyFilters);
+originSelect.addEventListener("change",applyFilters);
+destinationSelect.addEventListener("change",applyFilters);
+document.getElementById("clear").addEventListener("click",()=>{
+  search.value="";originSelect.value="";destinationSelect.value="";
+  for(const th of head.querySelectorAll("th[data-uf]")) th.hidden=false;
+  applyFilters();
+});
+</script>
+</body>
+</html>
