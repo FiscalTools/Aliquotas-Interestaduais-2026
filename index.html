@@ -87,8 +87,8 @@ tfoot td{padding:14px 18px;text-align:left;background:#f7fafc;color:var(--muted)
 
   <div class="intro">
     <article class="info"><h2>Como consultar</h2><p>Localize a UF na linha <b>Origem</b> e cruze com a UF na coluna <b>Destino</b>. O valor na interseção representa a alíquota indicada pela matriz.</p></article>
-    <article class="info"><h2>Operações interestaduais</h2><p>As alíquotas de referência mais comuns são 7% ou 12%, conforme a combinação de origem e destino prevista nas regras aplicáveis.</p></article>
-    <article class="info"><h2>Mercadoria importada</h2><p>A alíquota de 4% pode se aplicar a determinadas operações interestaduais com bens e mercadorias importados, observadas as condições e exceções legais.</p></article>
+    <article class="info"><h2>Operações interestaduais</h2><p>Em regra, aplica-se 7% nas saídas do Sul e Sudeste (exceto ES) com destino ao Norte, Nordeste, Centro-Oeste ou ES; nas demais combinações comuns, 12%.</p></article>
+    <article class="info"><h2>Mercadoria importada</h2><p>A alíquota de 4% é uma regra específica para determinadas operações interestaduais com mercadorias importadas. Não é uma UF nem se aplica automaticamente a toda mercadoria importada.</p></article>
   </div>
 
   <section class="panel" aria-labelledby="matrix-title">
@@ -103,16 +103,16 @@ tfoot td{padding:14px 18px;text-align:left;background:#f7fafc;color:var(--muted)
     </div>
     <div class="legend" aria-label="Legenda">
       <span class="key"><i class="swatch diag"></i>Alíquota interna indicada na diagonal</span>
-      <span class="key"><i class="swatch r4"></i>4% — regra para importados, quando aplicável</span>
+      <span class="key"><i class="swatch r4"></i>4% — regra específica para importados, explicada abaixo</span>
       <span class="key"><i class="swatch r7"></i>7% — determinadas combinações interestaduais</span>
       <span class="key"><i class="swatch r12"></i>12% — demais combinações indicadas</span>
     </div>
     <div class="table-wrap">
       <table id="matrix">
-        <caption>Valores em percentual (%). A linha “IM” representa a hipótese de origem de mercadoria importada prevista na matriz de referência.</caption>
+        <caption>Valores em percentual (%). A diagonal mostra alíquotas internas modais; as demais células mostram a regra interestadual geral.</caption>
         <thead><tr id="head-row"><th scope="col">ORIGEM ↓ / DESTINO →</th></tr></thead>
         <tbody id="body-rows"></tbody>
-        <tfoot><tr><td colspan="29">A diagonal contém alíquotas internas estaduais transcritas da matriz de referência fornecida. Confirme se continuam vigentes para a operação e data analisadas.</td></tr></tfoot>
+        <tfoot><tr><td colspan="28">As alíquotas internas na diagonal são modais (gerais). Produtos com alíquotas específicas e adicionais estaduais, como o FCP, exigem análise própria. A regra de 4% para importados não é representada como uma linha ou coluna de UF.</td></tr></tfoot>
       </table>
     </div>
   </section>
@@ -131,30 +131,40 @@ tfoot td{padding:14px 18px;text-align:left;background:#f7fafc;color:var(--muted)
     <section>
       <h2>Importante para o atendimento</h2>
       <p>Use a matriz como ponto de partida para a investigação. Antes de orientar parametrizações no sistema ou confirmar um tratamento tributário, registre o cenário e valide a regra com a contabilidade responsável.</p>
-      <p><b>Referências legais para conferência:</b> Resolução do Senado Federal nº 22/1989 (alíquotas interestaduais) e Resolução do Senado Federal nº 13/2012 (operações interestaduais com bens e mercadorias importados), além da legislação estadual e normas específicas vigentes.</p>
+      <p><b>Importante:</b> “alíquota interna modal” significa alíquota geral estadual. Não representa necessariamente a alíquota de todos os produtos e não inclui automaticamente adicionais do Fundo de Combate à Pobreza (FCP).</p>
       <p><span class="pill">Boa prática</span> Registre a data da consulta e a confirmação recebida da contabilidade no chamado ou na análise fiscal.</p>
     </section>
   </div>
-  <div class="footer">Material interno de apoio • Revisar periodicamente • A validação da regra aplicável é responsabilidade da análise fiscal com suporte da contabilidade.</div>
+  <section class="sources" id="fontes" style="margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px">
+    <h2 style="font-size:1.08rem;color:var(--navy);margin:0 0 8px">Fontes das informações</h2>
+    <p style="color:var(--muted);font-size:.93rem">As regras interestaduais foram relacionadas às normas federais abaixo. As alíquotas internas modais foram conferidas em materiais de consulta atualizados para 2026 que identificam as respectivas bases legais estaduais. Para uso operacional, confirme o texto legal consolidado e a vigência na UF pertinente.</p>
+    <ul style="color:var(--muted);font-size:.93rem;padding-left:20px">
+      <li><b>Resolução do Senado Federal nº 22/1989</b> — estabelece a regra geral de 12% e a alíquota de 7% para as combinações regionais especificadas. <a href="https://www.planalto.gov.br/ccivil_03/congresso/rsf/rsf%2022-89.htm" target="_blank" rel="noopener noreferrer">Consultar texto no Planalto</a>.</li>
+      <li><b>Resolução do Senado Federal nº 13/2012</b> — estabelece a alíquota de 4% para determinadas operações interestaduais com bens e mercadorias importados, com condições e exceções. <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/congresso/rsf-13-2012.htm" target="_blank" rel="noopener noreferrer">Consultar texto no Planalto</a>.</li>
+      <li><b>Consolidação de alíquotas internas de ICMS por UF — referência 2026</b> — material secundário para localizar percentuais e bases legais estaduais; não substitui a legislação oficial. <a href="https://beevix.com.br/icms" target="_blank" rel="noopener noreferrer">Tabela ICMS 2026 — Beevix</a>.</li>
+      <li><b>Conferência cruzada das alíquotas e alterações estaduais em 2026</b> — material secundário com notas sobre vigência e legislação por estado. <a href="https://www.barbieriadvogados.com/tabela-icms-2026/" target="_blank" rel="noopener noreferrer">Tabela ICMS 2026 — Barbieri Advogados</a>.</li>
+    </ul>
+    <p style="color:var(--muted);font-size:.93rem"><b>Escopo e limitação:</b> esta é uma matriz de referência geral, não um parecer tributário nem uma garantia de aplicabilidade a qualquer operação. As alíquotas internas devem ser reconfirmadas nas leis estaduais e nos portais oficiais das SEFAZ, especialmente após alterações legislativas. Data da compilação: 29/10/2026.</p>
+  </section>
+  <div class="footer">N2 Fiscal • Material interno de apoio • Validar sempre com a contabilidade responsável e a legislação vigente.</div>
 </main>
 <script>
 const states = [
-  ["AC",19],["AL",19],["AM",20],["AP",18],["BA",20.5],["CE",20],["DF",20],["ES",17],
-  ["GO",19],["MA",22],["MT",17],["MS",17],["MG",18],["PA",19],["PB",20],["PR",19.5],
-  ["PE",20.5],["PI",22.5],["RN",18],["RS",17],["RJ",20],["RO",19.5],["RR",20],["SC",17],
-  ["SP",18],["SE",19],["TO",20],["IM",4]
+  ["AC",19],["AL",20.5],["AM",20],["AP",18],["BA",20.5],["CE",20],["DF",20],
+  ["ES",17],["GO",19],["MA",23],["MG",18],["MS",17],["MT",17],["PA",19],
+  ["PB",20],["PE",20.5],["PI",22.5],["PR",19.5],["RJ",20],["RN",20],
+  ["RO",19.5],["RR",20],["RS",17],["SC",17],["SE",19],["SP",18],["TO",20]
 ];
 const north = new Set(["AC","AP","AM","PA","RO","RR","TO"]);
 const northeast = new Set(["AL","BA","CE","MA","PB","PE","PI","RN","SE"]);
 const midwest = new Set(["DF","GO","MT","MS"]);
-const southeast = new Set(["ES","MG","RJ","SP"]);
+const southeastExceptES = new Set(["MG","RJ","SP"]);
 const south = new Set(["PR","RS","SC"]);
 const allRegions = [north,northeast,midwest];
 function interstateRate(origin,dest){
-  if(origin==="IM") return 4;
   if(origin===dest) return states.find(s=>s[0]===origin)[1];
   // 7% quando a origem está no Sul/Sudeste (exceto ES) e o destino está no N/NE/CO ou ES.
-  const originSouthEast = (south.has(origin) || (southeast.has(origin) && origin!=="ES"));
+  const originSouthEast = (south.has(origin) || southeastExceptES.has(origin));
   const destinationGroup = north.has(dest)||northeast.has(dest)||midwest.has(dest)||dest==="ES";
   return originSouthEast && destinationGroup ? 7 : 12;
 }
